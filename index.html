@@ -3,196 +3,1311 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="منوی دیجیتال کافه آس - بهترین کافه قزوین با انواع صبحانه و نوشیدنی‌های گرم">
+    <meta name="keywords" content="کافه, قزوین, منو, صبحانه, قهوه, کافه آس">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="کافه آس | منوی دیجیتال">
+    <meta property="og:description" content="منوی دیجیتال کافه آس - بهترین کافه قزوین">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cafe-as.com">
+    
     <title>کافه آس | منوی دیجیتال</title>
+    
+    <!-- Preconnect برای سرعت بیشتر -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Schema.org برای رستوران -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "کافه آس",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "قزوین",
+            "addressRegion": "قزوین",
+            "streetAddress": "سعدی فرعی جنوبی"
+        },
+        "telephone": "+989934633400",
+        "servesCuisine": ["صبحانه", "قهوه", "نوشیدنی گرم"],
+        "priceRange": "$$"
+    }
+    </script>
+
+    <style>
+        /* =========================
+           فونت و تنظیمات پایه
+        ========================= */
+
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap');
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            color: #f5ead7;
+            line-height: 1.8;
+            background: #171310;
+            transition: background 0.5s ease, color 0.5s ease;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* =========================
+           انیمیشن پس‌زمینه حرکتی با اسکرول
+        ========================= */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+            will-change: transform;
+        }
+
+        .animated-bg .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.25;
+            will-change: transform, opacity;
+            transition: transform 0.1s ease-out;
+        }
+
+        .animated-bg .orb:nth-child(1) {
+            width: 400px;
+            height: 400px;
+            background: #d8b56a;
+            top: -10%;
+            left: -10%;
+        }
+
+        .animated-bg .orb:nth-child(2) {
+            width: 350px;
+            height: 350px;
+            background: #8a6a3a;
+            bottom: -10%;
+            right: -10%;
+        }
+
+        .animated-bg .orb:nth-child(3) {
+            width: 300px;
+            height: 300px;
+            background: #5a3d2b;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* ذرات کوچک (ستاره‌های درخشان) */
+        .animated-bg .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #d8b56a;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: twinkle 8s infinite alternate;
+            will-change: transform, opacity;
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.1; transform: scale(0.8); }
+            100% { opacity: 0.5; transform: scale(1.4); }
+        }
+
+        /* حالت روشن برای پس‌زمینه */
+        body.light-mode .animated-bg .orb {
+            opacity: 0.15;
+        }
+
+        body.light-mode .animated-bg .orb:nth-child(1) {
+            background: #d8b56a;
+        }
+        body.light-mode .animated-bg .orb:nth-child(2) {
+            background: #b8945a;
+        }
+        body.light-mode .animated-bg .orb:nth-child(3) {
+            background: #e8d5b0;
+        }
+
+        .menu {
+            width: 100%;
+            max-width: 600px;
+            margin: auto;
+            padding: 20px 15px 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* =========================
+           هدر
+        ========================= */
+
+        .header {
+            text-align: center;
+            padding: 35px 15px 30px;
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        /* دکمه تغییر تم */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            width: 45px;
+            height: 45px;
+            background: #251e19;
+            border: 1px solid #4a3a28;
+            border-radius: 50%;
+            color: #d8b56a;
+            font-size: 20px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(20deg);
+            box-shadow: 0 0 30px rgba(216, 181, 106, 0.3);
+        }
+
+        .logo-box {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #211b17;
+            border: 1px solid #5a4934;
+            border-radius: 22px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .logo-box:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 18px rgba(216, 181, 106, 0.18);
+        }
+
+        .logo-box img {
+            width: 92px;
+            height: 92px;
+            object-fit: contain;
+            transition: transform 0.4s ease, filter 0.4s ease;
+        }
+
+        .logo-box:hover img {
+            transform: scale(1.04);
+            filter: drop-shadow(0 0 8px rgba(216, 181, 106, 0.25));
+        }
+
+        .header h1 {
+            font-size: 38px;
+            font-weight: 700;
+            color: #d8b56a;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 10px rgba(216, 181, 106, 0.15);
+        }
+
+        .header-decoration {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+            margin-bottom: 8px;
+        }
+
+        .header-decoration div {
+            width: 55px;
+            height: 1px;
+            background: #493b2d;
+        }
+
+        .header-decoration span {
+            color: #d8b56a;
+            font-size: 9px;
+        }
+
+        .header-date {
+            color: #b8a995;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        /* دکمه‌های فیلتر */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background: #211b17;
+            border: 1px solid #4a3a28;
+            border-radius: 25px;
+            color: #b8a995;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background: #332a23;
+            color: #f5ead7;
+        }
+
+        .filter-btn.active {
+            background: #d8b56a;
+            color: #171310;
+            border-color: #d8b56a;
+        }
+
+        /* =========================
+           بخش‌ها
+        ========================= */
+
+        .menu-section {
+            margin-bottom: 28px;
+            transition: opacity 0.3s ease;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            margin: 30px 0 20px;
+        }
+
+        .section-title::before,
+        .section-title::after {
+            content: "";
+            width: 45px;
+            height: 1px;
+            background: #493b2d;
+        }
+
+        .section-title h2 {
+            color: #d8b56a;
+            font-size: 23px;
+            font-weight: 600;
+        }
+
+        .section-title span {
+            color: #d8b56a;
+            font-size: 10px;
+        }
+
+        .section-count {
+            font-size: 12px !important;
+            color: #a99b8a !important;
+        }
+
+        /* =========================
+           کارت غذا
+        ========================= */
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 12px 16px;
+            margin-bottom: 14px;
+            min-height: 125px;
+            background: linear-gradient(145deg, #251e19, #1d1814);
+            border: 1px solid #332a23;
+            border-radius: 16px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.25);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease, opacity 0.3s ease;
+            animation: cardAppear 0.6s ease both;
+            cursor: pointer;
+        }
+
+        .menu-item.hidden {
+            display: none;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-4px);
+            border-color: #6a5438;
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+        }
+
+        .menu-item img {
+            width: 105px;
+            height: 105px;
+            flex: 0 0 105px;
+            object-fit: cover;
+            border-radius: 14px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.35s ease;
+        }
+
+        .menu-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .menu-item > div {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .menu-item h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #f5ead7;
+            margin-bottom: 5px;
+        }
+
+        .menu-item p {
+            font-size: 12px;
+            color: #a99b8a;
+        }
+
+        .menu-item .price {
+            flex: 0 0 auto;
+            min-width: 80px;
+            padding: 6px 10px;
+            text-align: center;
+            color: #d8b56a;
+            background: #2a2119;
+            border: 1px solid #4a3a28;
+            border-radius: 20px;
+            font-size: 15px;
+            font-weight: 700;
+            transition: 0.25s;
+        }
+
+        .menu-item:hover .price {
+            transform: scale(1.05);
+            background: #3a2d1e;
+            color: #f0ce7a;
+        }
+
+        .menu-item .price small {
+            font-size: 10px;
+            font-weight: 400;
+        }
+
+        /* برچسب محبوب */
+        .badge {
+            display: inline-block;
+            padding: 2px 12px;
+            margin-top: 4px;
+            background: #d8b56a;
+            color: #171310;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 600;
+        }
+
+        /* =========================
+           فوتر
+        ========================= */
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px 15px 20px;
+        }
+
+        .footer-line {
+            width: 60px;
+            height: 2px;
+            background: #d8b56a;
+            margin: 0 auto 20px;
+        }
+
+        .footer h2 {
+            color: #d8b56a;
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .footer-message {
+            color: #b8a995;
+            font-size: 13px;
+            margin-bottom: 15px;
+        }
+
+        .footer-info {
+            color: #9d9182;
+            font-size: 12px;
+            line-height: 2.2;
+        }
+
+        .footer-info a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-info a:hover {
+            color: #d8b56a;
+        }
+
+        /* شبکه‌های اجتماعی */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .social-links a {
+            color: #b8a995;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .social-links a:hover {
+            color: #d8b56a;
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            color: #7a6f62;
+            font-size: 11px;
+            margin-top: 15px;
+        }
+
+        /* دکمه بازگشت به بالا */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            width: 50px;
+            height: 50px;
+            background: #d8b56a;
+            color: #171310;
+            border: none;
+            border-radius: 50%;
+            font-size: 24px;
+            opacity: 0;
+            visibility: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(216, 181, 106, 0.3);
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 30px rgba(216, 181, 106, 0.5);
+        }
+
+        /* =========================
+           تم روشن
+        ========================= */
+
+        body.light-mode {
+            background: #f5ead7;
+            color: #2a2119;
+        }
+
+        body.light-mode .menu-item {
+            background: #ffffff;
+            border-color: #d8b56a;
+        }
+
+        body.light-mode .menu-item h3 {
+            color: #2a2119;
+        }
+
+        body.light-mode .menu-item p {
+            color: #6a5f52;
+        }
+
+        body.light-mode .menu-item .price {
+            background: #f5ead7;
+            color: #8a6a3a;
+            border-color: #d8b56a;
+        }
+
+        body.light-mode .theme-toggle {
+            background: #ffffff;
+            border-color: #d8b56a;
+            color: #8a6a3a;
+        }
+
+        body.light-mode .filter-btn {
+            background: #ffffff;
+            border-color: #d8b56a;
+            color: #6a5f52;
+        }
+
+        body.light-mode .filter-btn:hover {
+            background: #f5ead7;
+            color: #2a2119;
+        }
+
+        body.light-mode .filter-btn.active {
+            background: #d8b56a;
+            color: #171310;
+        }
+
+        body.light-mode .logo-box {
+            background: #ffffff;
+            border-color: #d8b56a;
+        }
+
+        body.light-mode .header h1 {
+            color: #8a6a3a;
+        }
+
+        body.light-mode .footer h2 {
+            color: #8a6a3a;
+        }
+
+        body.light-mode .footer-line {
+            background: #d8b56a;
+        }
+
+        body.light-mode .footer-info {
+            color: #6a5f52;
+        }
+
+        body.light-mode .social-links a {
+            color: #6a5f52;
+        }
+
+        body.light-mode .social-links a:hover {
+            color: #8a6a3a;
+        }
+
+        body.light-mode .copyright {
+            color: #a99b8a;
+        }
+
+        body.light-mode .badge {
+            background: #d8b56a;
+            color: #171310;
+        }
+
+        body.light-mode .section-title::before,
+        body.light-mode .section-title::after {
+            background: #d8b56a;
+        }
+
+        body.light-mode .section-count {
+            color: #6a5f52 !important;
+        }
+
+        body.light-mode .header-date {
+            color: #6a5f52;
+        }
+
+        body.light-mode .header-decoration div {
+            background: #d8b56a;
+        }
+
+        /* =========================
+           انیمیشن‌ها
+        ========================= */
+
+        .header,
+        .menu-section,
+        .footer {
+            animation: fadeUp 0.7s ease both;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes cardAppear {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* تاخیر در انیمیشن کارت‌ها */
+        .menu-item:nth-child(1) { animation-delay: 0.05s; }
+        .menu-item:nth-child(2) { animation-delay: 0.10s; }
+        .menu-item:nth-child(3) { animation-delay: 0.15s; }
+        .menu-item:nth-child(4) { animation-delay: 0.20s; }
+        .menu-item:nth-child(5) { animation-delay: 0.25s; }
+        .menu-item:nth-child(6) { animation-delay: 0.30s; }
+        .menu-item:nth-child(7) { animation-delay: 0.35s; }
+
+        /* =========================
+           موبایل
+        ========================= */
+
+        @media (max-width: 450px) {
+            .header h1 {
+                font-size: 29px;
+            }
+
+            .menu-item {
+                gap: 11px;
+                padding: 10px;
+                min-height: 110px;
+            }
+
+            .menu-item img {
+                width: 88px;
+                height: 88px;
+                flex-basis: 88px;
+            }
+
+            .menu-item h3 {
+                font-size: 16px;
+            }
+
+            .menu-item p {
+                font-size: 11px;
+            }
+
+            .menu-item .price {
+                min-width: 70px;
+                padding: 5px 8px;
+                font-size: 13px;
+            }
+
+            .menu-item .price small {
+                font-size: 9px;
+            }
+
+            .back-to-top {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .filter-btn {
+                padding: 6px 14px;
+                font-size: 12px;
+            }
+
+            .section-title h2 {
+                font-size: 19px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-    <main class="menu">
+    <!-- ========== پس‌زمینه انیمیشنی با اسکرول ========== -->
+    <div class="animated-bg" id="animatedBg" aria-hidden="true">
+        <div class="orb" id="orb1"></div>
+        <div class="orb" id="orb2"></div>
+        <div class="orb" id="orb3"></div>
+        <!-- ذرات کوچک -->
+        <div class="particle" style="top:10%; left:20%; animation-delay:0s;"></div>
+        <div class="particle" style="top:30%; left:80%; animation-delay:2s;"></div>
+        <div class="particle" style="top:60%; left:15%; animation-delay:4s;"></div>
+        <div class="particle" style="top:80%; left:70%; animation-delay:1s;"></div>
+        <div class="particle" style="top:45%; left:50%; animation-delay:3s;"></div>
+        <div class="particle" style="top:15%; left:60%; animation-delay:5s;"></div>
+        <div class="particle" style="top:75%; left:30%; animation-delay:2.5s;"></div>
+        <div class="particle" style="top:50%; left:10%; animation-delay:4.5s;"></div>
+    </div>
 
-   <header class="header">
+    <main class="menu" role="main">
+        
+        <!-- ========== هدر ========== -->
+        <header class="header">
+            <button class="theme-toggle" id="themeToggle" aria-label="تغییر تم">
+                🌙
+            </button>
+            
+            <div class="logo-box">
+                <img 
+                    src="images/cafe-as-logo.png" 
+                    alt="لوگوی کافه آس"
+                    width="92"
+                    height="92"
+                    loading="lazy"
+                >
+            </div>
+            
+            <h1>☕ کافه آس</h1>
+            
+            <div class="header-decoration">
+                <span>✦</span>
+                <div></div>
+                <span>✦</span>
+            </div>
+            
+            <p class="header-date">
+                <span id="currentDate"></span>
+            </p>
+            
+            <!-- دکمه‌های فیلتر -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">همه</button>
+                <button class="filter-btn" data-filter="breakfast">🍳 صبحانه</button>
+                <button class="filter-btn" data-filter="cafe">☕ کافه</button>
+            </div>
+        </header>
 
-    <img 
-        src="images/cafe-as-logo.png" 
-        alt="لوگوی کافه آس" 
-        class="cafe-logo"
-    >
-
-    <h1>کافه آس</h1>
-
-    <div class="header-line"></div>
-
-    <p>طعم خوب، حال خوب</p>
-
-</header>
-
-        <section class="menu-section">
-
+        <!-- ========== بخش صبحانه ========== -->
+        <section class="menu-section" id="breakfast-section" aria-labelledby="breakfast-title">
             <div class="section-title">
-    <span>✦</span>
-    <h2>صبحانه</h2>
-    <span>✦</span>
-</div>
+                <span>✦</span>
+                <h2 id="breakfast-title">🍳 صبحانه</h2>
+                <span class="section-count">۷ آیتم</span>
+                <span>✦</span>
+            </div>
 
-            <div class="menu-item">
+            <!-- آیتم 1 -->
+            <article class="menu-item" data-category="breakfast" data-name="نیمرو لوبیا">
+                <img 
+                    src="images/nimro-lobia.jpg" 
+                    alt="نیمرو لوبیا - غذای گرم و مقوی"
+                    width="105"
+                    height="105"
+                    loading="lazy"
+                >
+                <div>
+                    <h3>نیمرو لوبیا</h3>
+                    <p>نیمرو تازه همراه با لوبیای مخصوص</p>
+                    
+                </div>
+                <span class="price">۲۰۰,۰۰۰ <small>تومان</small></span>
+            </article>
 
-    <img src="images/nimro-lobia.jpg" alt="نیمرو لوبیا">
+            <!-- آیتم 2 -->
+            <article class="menu-item" data-category="breakfast" data-name="نیمرو عدس">
+                <img 
+                    src="images/nimro-adas.jpg" 
+                    alt="نیمرو عدس - غذای گرم و مقوی"
+                    width="105"
+                    height="105"
+                    loading="lazy"
+                >
+                <div>
+                    <h3>نیمرو عدس</h3>
+                    <p>نیمرو تازه همراه با عدس</p>
+                </div>
+                <span class="price">۱۹۰,۰۰۰ <small>تومان</small></span>
+            </article>
 
-    <div>
-        <h3>نیمرو لوبیا</h3>
-        <p>نیمرو تازه همراه با لوبیای مخصوص</p>
-    </div>
+            <!-- آیتم 3 -->
+            <article class="menu-item" data-category="breakfast" data-name="نیمرو">
+                <img 
+                    src="images/nimro.jpg" 
+                    alt="نیمرو - تخم‌مرغ تازه"
+                    width="105"
+                    height="105"
+                    loading="lazy"
+                >
+                <div>
+                    <h3>نیمرو</h3>
+                    <p>نیمرو تازه و خوشمزه</p>
+                </div>
+                <span class="price">۱۳۰,۰۰۰ <small>تومان</small></span>
+            </article>
 
-    <span>۲۰۰</span>
-
-</div>
-
-            <div class="menu-item">
-
-    <img src="images/nimro-adas.jpg" alt="نیمرو عدس">
-
-    <div>
-        <h3>نیمرو عدس</h3>
-        <p>نیمرو تازه همراه با عدس</p>
-    </div>
-
-    <span>۱۹۰</span>
-
-</div>
-
-       <div class="menu-item">
-    <img src="images/nimro.jpg" alt="نیمرو">
-
-    <div>
-        <h3>نیمرو</h3>
-        <p>نیمرو تازه و خوشمزه</p>
-    </div>
-
-    <span>۱۳۰</span>
-</div>
-
-            <div class="menu-item">
-         <img src="images/omllet.jpg" alt="املت">
+            <!-- آیتم 4 -->
+            <article class="menu-item" data-category="breakfast" data-name="املت">
+                <img 
+                    src="images/omllet.jpg" 
+                    alt="املت مخصوص کافه آس"
+                    width="105"
+                    height="105"
+                    loading="lazy"
+                >
                 <div>
                     <h3>املت</h3>
                     <p>املت مخصوص کافه آس</p>
+                    
                 </div>
-                <span>۱۶۰</span>
-            </div>
+                <span class="price">۱۶۰,۰۰۰ <small>تومان</small></span>
+            </article>
 
-            <div class="menu-item">
-                <img src="images/adasi.jpg" alt="عدس">
+            <!-- آیتم 5 -->
+            <article class="menu-item" data-category="breakfast" data-name="عدس">
+                <img 
+                    src="images/adasi.jpg" 
+                    alt="عدس گرم و تازه"
+                    width="105"
+                    height="105"
+                    loading="lazy"
+                >
                 <div>
                     <h3>عدس</h3>
                     <p>عدس گرم و تازه</p>
                 </div>
-                <span>۱۴۰</span>
-            </div>
+                <span class="price">۱۴۰,۰۰۰ <small>تومان</small></span>
+            </article>
 
-            <div class="menu-item">
-                <img src="images/loobia.jpg" alt="لوبیا">
+            <!-- آیتم 6 -->
+            <article class="menu-item" data-category="breakfast" data-name="لوبیا">
+                <img 
+                    src="images/loobia.jpg" 
+                    alt="لوبیای گرم و مخصوص"
+                    width="105"
+                    height="105"
+                    loading="lazy"
+                >
                 <div>
                     <h3>لوبیا</h3>
                     <p>لوبیای گرم و مخصوص</p>
                 </div>
-                <span>۱۸۰</span>
-            </div>
+                <span class="price">۱۸۰,۰۰۰ <small>تومان</small></span>
+            </article>
 
-            <div class="menu-item">
-                <img src="images/omlet2.jpg" alt="مکزیکی">
+            <!-- آیتم 7 -->
+            <article class="menu-item" data-category="breakfast" data-name="مکذیکی">
+                <img 
+                    src="images/omlet2.jpg" 
+                    alt="مکذیکی - ترکیب سوسیس و نیمرو"
+                    width="105"
+                    height="105"
+                    loading="lazy"
+                >
                 <div>
-                    <h3>مکزیکی</h3>
+                    <h3>مکذیکی</h3>
                     <p>ترکیب سوسیس با نیمرو و ادویه‌جات مخصوص</p>
+                    
                 </div>
-                <span>۲۴۰</span>
-            </div>
-
+                <span class="price">۲۴۰,۰۰۰ <small>تومان</small></span>
+            </article>
         </section>
 
-        <section class="menu-section">
-
+        <!-- ========== بخش کافه ========== -->
+        <section class="menu-section" id="cafe-section" aria-labelledby="cafe-title">
             <div class="section-title">
-    <span>✦</span>
-    <h2>کافه</h2>
-    <span>✦</span>
-</div>
+                <span>✦</span>
+                <h2 id="cafe-title">☕ کافه</h2>
+                <span class="section-count">۵ آیتم</span>
+                <span>✦</span>
+            </div>
 
-            <div class="menu-item">
-                <img src="images/Coffee.jpg" alt="اسپرسو تک">
+            <!-- آیتم 1 -->
+            <article class="menu-item" data-category="cafe" data-name="اسپرسو تک">
+                <img 
+                    src="images/Coffee.jpg" 
+                    alt="اسپرسو تک - قهوه تازه"
+                    width="105"
+                    height="105"
+                    loading="lazy"
+                >
                 <div>
                     <h3>اسپرسو تک</h3>
                     <p>اسپرسوی تازه و خوش‌عطر</p>
                 </div>
-                <span>۸۰</span>
-            </div>
+                <span class="price">۸۰,۰۰۰ <small>تومان</small></span>
+            </article>
 
-            <div class="menu-item">
-                <img src="images/Coffee.jpg" alt="اسپرسو دوبل">
+            <!-- آیتم 2 -->
+            <article class="menu-item" data-category="cafe" data-name="اسپرسو دوبل">
+                <img 
+                    src="images/Coffee.jpg" 
+                    alt="اسپرسو دوبل - دو شات قهوه"
+                    width="105"
+                    height="105"
+                    loading="lazy"
+                >
                 <div>
                     <h3>اسپرسو دوبل</h3>
                     <p>دو شات اسپرسو</p>
+                    
                 </div>
-                <span>۹۰</span>
-            </div>
+                <span class="price">۹۰,۰۰۰ <small>تومان</small></span>
+            </article>
 
-            <div class="menu-item">
-                <img src="images/good.jpg" alt="چای">
+            <!-- آیتم 3 -->
+            <article class="menu-item" data-category="cafe" data-name="چای">
+                <img 
+                    src="images/good.jpg" 
+                    alt="چای تازه و خوش‌عطر"
+                    width="105"
+                    height="105"
+                    loading="lazy"
+                >
                 <div>
                     <h3>چای</h3>
                     <p>چای تازه و خوش‌عطر</p>
                 </div>
-                <span>۲۰</span>
-            </div>
+                <span class="price">۲۰,۰۰۰ <small>تومان</small></span>
+            </article>
 
-            <div class="menu-item">
-                <img src="images/neskafe.jpg" alt="نسکافه">
+            <!-- آیتم 4 -->
+            <article class="menu-item" data-category="cafe" data-name="نسکافه">
+                <img 
+                    src="images/neskafe.jpg" 
+                    alt="نسکافه گرم و خوش‌طعم"
+                    width="105"
+                    height="105"
+                    loading="lazy"
+                >
                 <div>
                     <h3>نسکافه</h3>
                     <p>نسکافه گرم و خوش‌طعم</p>
                 </div>
-                <span>۱۴۰</span>
-            </div>
+                <span class="price">۱۴۰,۰۰۰ <small>تومان</small></span>
+            </article>
 
-            <div class="menu-item">
-                <img src="images/Hot Chocolate.jpg" alt="هات چاکلت">
+            <!-- آیتم 5 -->
+            <article class="menu-item" data-category="cafe" data-name="هات چاکلت">
+                <img 
+                    src="images/Hot Chocolate.jpg" 
+                    alt="هات چاکلت - شکلات داغ"
+                    width="105"
+                    height="105"
+                    loading="lazy"
+                >
                 <div>
                     <h3>هات چاکلت</h3>
                     <p>شکلات داغ مخصوص</p>
+                    
                 </div>
-                <span>۱۶۰</span>
-            </div>
-
+                <span class="price">۱۶۰,۰۰۰ <small>تومان</small></span>
+            </article>
         </section>
 
-<footer class="footer">
-
-    <div class="footer-line"></div>
-
-    <h2>کافه آس</h2>
-
-    <p class="footer-message">
-        از انتخاب شما سپاسگزاریم ❤️
-    </p>
-
-    <div class="footer-info">
-
-        <p>📍 قزوین، سعدی فرعی جنوبی</p>
-
-        <p>
-            📞
-            <a href="tel:09934633400">
-                ۰۹۹۳۴۶۳۳۴۰۰
-            </a>
-        </p>
-
-    </div>
-
-</footer>
+        <!-- ========== فوتر ========== -->
+        <footer class="footer">
+            <div class="footer-line"></div>
+            
+            <h2>کافه آس</h2>
+            
+            <p class="footer-message">
+                از انتخاب شما سپاسگزاریم ❤️
+            </p>
+            
+            
+            
+            <div class="footer-info">
+                <p>
+                    <span aria-hidden="true">📍</span> 
+                    قزوین، سعدی فرعی جنوبی
+                </p>
+                <p>
+                    <span aria-hidden="true">📞</span>
+                    <a href="tel:09934633400" aria-label="تماس با کافه آس">
+                        ۰۹۹۳۴۶۳۳۴۰۰
+                    </a>
+                </p>
+                <p>
+                    <span aria-hidden="true">🕐</span>
+                    شنبه تا پنجشنبه ۸:۰۰ - ۲۳:۰۰
+                </p>
+                <p>
+                    <span aria-hidden="true">📧</span>
+                    <a href="mailto:info@cafe-as.com" aria-label="ایمیل به کافه آس">
+                        info@cafe-as.com
+                    </a>
+                </p>
+            </div>
+            
+            <!-- شبکه‌های اجتماعی -->
+            <div class="social-links">
+                <a href="#" aria-label="اینستاگرام کافه آس">
+                    <span>📷</span> اینستاگرام
+                </a>
+                <a href="#" aria-label="تلگرام کافه آس">
+                    <span>✈️</span> تلگرام
+                </a>
+            </div>
+            
+            <p class="copyright">
+                © ۲۰۲۶ کافه آس - تمامی حقوق محفوظ است
+            </p>
+            
+            <button class="back-to-top" id="backToTop" aria-label="بازگشت به بالا">
+                ↑
+            </button>
+        </footer>
 
     </main>
 
-    <script src="script.js"></script>
+    <script>
+        // =========================
+        // 1. نمایش تاریخ امروز
+        // =========================
 
+        document.addEventListener('DOMContentLoaded', function() {
+            const dateSpan = document.getElementById('currentDate');
+            if (dateSpan) {
+                const now = new Date();
+                const options = { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric',
+                    weekday: 'long'
+                };
+                dateSpan.textContent = now.toLocaleDateString('fa-IR', options);
+            }
+        });
+
+        // =========================
+        // 2. دکمه تغییر تم (روز/شب)
+        // =========================
+
+        const themeToggle = document.getElementById('themeToggle');
+        if (themeToggle) {
+            // بررسی تم ذخیره شده
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.body.classList.add('light-mode');
+                themeToggle.textContent = '☀️';
+            }
+            
+            themeToggle.addEventListener('click', function() {
+                document.body.classList.toggle('light-mode');
+                
+                // تغییر آیکون
+                const isLight = document.body.classList.contains('light-mode');
+                this.textContent = isLight ? '☀️' : '🌙';
+                
+                // ذخیره در localStorage
+                localStorage.setItem('theme', isLight ? 'light' : 'dark');
+            });
+        }
+
+        // =========================
+        // 3. دکمه بازگشت به بالا
+        // =========================
+
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        if (backToTop) {
+            backToTop.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // =========================
+        // 4. فیلتر دسته‌بندی
+        // =========================
+
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const menuItems = document.querySelectorAll('.menu-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // حذف کلاس active از همه دکمه‌ها
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                this.classList.add('active');
+                
+                const filter = this.dataset.filter;
+                
+                menuItems.forEach(item => {
+                    if (filter === 'all') {
+                        item.classList.remove('hidden');
+                    } else if (item.dataset.category === filter) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // =========================
+        // 5. اسکرول به بخش‌ها با کلیک روی دکمه‌های فیلتر
+        // =========================
+
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const filter = this.dataset.filter;
+                if (filter !== 'all') {
+                    const targetSection = document.getElementById(`${filter}-section`);
+                    if (targetSection) {
+                        setTimeout(() => {
+                            targetSection.scrollIntoView({ 
+                                behavior: 'smooth', 
+                                block: 'start' 
+                            });
+                        }, 300);
+                    }
+                }
+            });
+        });
+
+        // =========================
+        // 6. کلیک روی آیتم منو (نمایش جزئیات)
+        // =========================
+
+        menuItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const name = this.dataset.name;
+                const price = this.querySelector('.price')?.textContent?.trim() || 'نامشخص';
+                const desc = this.querySelector('p')?.textContent || 'توضیحی موجود نیست';
+                
+                // نمایش در کنسول (می‌توانید به دلخواه تغییر دهید)
+                console.log(`🍽 ${name} | 💰 ${price} | 📝 ${desc}`);
+                
+                // نمایش نوتیفیکیشن ساده
+                showNotification(`🍽 ${name} - ${price}`, 'info');
+            });
+        });
+
+        // =========================
+        // 7. انیمیشن پس‌زمینه با اسکرول
+        // =========================
+
+        const orb1 = document.getElementById('orb1');
+        const orb2 = document.getElementById('orb2');
+        const orb3 = document.getElementById('orb3');
+        const bg = document.getElementById('animatedBg');
+
+        let lastScrollY = 0;
+        let ticking = false;
+
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(function() {
+                    const scrollY = window.scrollY;
+                    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+                    const progress = maxScroll > 0 ? scrollY / maxScroll : 0;
+
+                    // حرکت دایره‌ها با اسکرول - هر کدام با سرعت و جهت متفاوت
+                    // دایره اول: حرکت مورب
+                    const x1 = -10 + progress * 15; // از -10% به 5%
+                    const y1 = -10 + progress * 25; // از -10% به 15%
+                    orb1.style.transform = `translate(${x1}%, ${y1}%) scale(${1 + progress * 0.3})`;
+                    orb1.style.opacity = 0.2 + progress * 0.2;
+
+                    // دایره دوم: حرکت معکوس
+                    const x2 = -10 + (1 - progress) * 20;
+                    const y2 = -10 + (1 - progress) * 30;
+                    orb2.style.transform = `translate(${x2}%, ${y2}%) scale(${1.2 - progress * 0.4})`;
+                    orb2.style.opacity = 0.2 + (1 - progress) * 0.2;
+
+                    // دایره سوم: چرخش دورانی
+                    const angle = progress * 360;
+                    const radius = 15 + progress * 20;
+                    const cx = 50, cy = 50;
+                    const x3 = cx + radius * Math.cos(angle * Math.PI / 180) - 50;
+                    const y3 = cy + radius * Math.sin(angle * Math.PI / 180) - 50;
+                    orb3.style.transform = `translate(${x3}%, ${y3}%) scale(${0.9 + progress * 0.4})`;
+                    orb3.style.opacity = 0.2 + Math.sin(progress * Math.PI * 2) * 0.1 + 0.15;
+
+                    // حرکت ذرات با اسکرول (افکت پارالاکس ملایم)
+                    const particles = document.querySelectorAll('.particle');
+                    particles.forEach((p, index) => {
+                        const speed = 0.1 + (index % 3) * 0.05;
+                        const offset = (scrollY * speed) % 200;
+                        const currentTop = parseFloat(p.style.top);
+                        // تغییر جزئی در موقعیت
+                        const shift = Math.sin(scrollY * 0.001 + index) * 2;
+                        p.style.transform = `translateY(${shift}px)`;
+                    });
+
+                    lastScrollY = scrollY;
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // =========================
+        // 8. سیستم نوتیفیکیشن
+        // =========================
+
+        function showNotification(message, type = 'info') {
+            // حذف نوتیفیکیشن قبلی
+            const existing = document.querySelector('.custom-notification');
+            if (existing) existing.remove();
+
+            const notif = document.createElement('div');
+            notif.className = 'custom-notification';
+            notif.style.cssText = `
+                position: fixed;
+                bottom: 100px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: rgba(37, 30, 25, 0.95);
+                color: #d8b56a;
+                padding: 12px 24px;
+                border-radius: 16px;
+                border: 1px solid #4a3a28;
+                font-family: 'Vazirmatn', sans-serif;
+                font-size: 14px;
+                z-index: 9999;
+                backdrop-filter: blur(10px);
+                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+                opacity: 0;
+                transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+                text-align: center;
+                max-width: 90%;
+                pointer-events: none;
+            `;
+            notif.textContent = message;
+
+            document.body.appendChild(notif);
+
+            // نمایش با انیمیشن
+            requestAnimationFrame(() => {
+                notif.style.opacity = '1';
+                notif.style.transform = 'translateX(-50%) translateY(-10px)';
+            });
+
+            // حذف بعد از 2.5 ثانیه
+            setTimeout(() => {
+                notif.style.opacity = '0';
+                notif.style.transform = 'translateX(-50%) translateY(20px)';
+                setTimeout(() => notif.remove(), 400);
+            }, 2500);
+        }
+
+        // =========================
+        // 9. اجرای اولیه انیمیشن پس‌زمینه
+        // =========================
+
+        // تریگر اولیه برای تنظیم موقعیت
+        setTimeout(() => {
+            window.dispatchEvent(new Event('scroll'));
+        }, 100);
+    </script>
 </body>
 </html>
