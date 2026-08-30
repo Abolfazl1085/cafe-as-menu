@@ -56,7 +56,6 @@
             background: #f0ce7a;
         }
         
-        /* ===== انیمیشن پس‌زمینه ===== */
         .animated-bg {
             position: fixed;
             top: 0;
@@ -133,7 +132,6 @@
             z-index: 1;
         }
         
-        /* ===== هدر ===== */
         .header {
             text-align: center;
             padding: 35px 15px 30px;
@@ -387,7 +385,6 @@
             font-weight: 600;
         }
         
-        /* ===== مودال ===== */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -504,7 +501,6 @@
             gap: 8px;
         }
         
-        /* ===== مواد اولیه ===== */
         .modal-ingredients {
             display: flex;
             flex-wrap: wrap;
@@ -557,7 +553,6 @@
             font-size: 22px;
         }
         
-        /* ===== تم روشن مودال ===== */
         body.light-mode .modal-content {
             background: #ffffff;
             border-color: #d8b56a;
@@ -647,9 +642,9 @@
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
-            gap: 5px;
-            padding: 6px 14px;
-            border-radius: 20px;
+            gap: 8px;
+            padding: 8px 18px;
+            border-radius: 25px;
             background: #211b17;
             border: 1px solid #332a23;
         }
@@ -797,7 +792,7 @@
             "addressRegion": "قزوین",
             "streetAddress": "سعدی فرعی جنوبی"
         },
-        "telephone": "+989934633400",
+        "telephone": "+989965341076",
         "servesCuisine": ["صبحانه", "قهوه", "نوشیدنی گرم"],
         "priceRange": "$$"
     }
@@ -852,7 +847,18 @@
                 <span>✦</span>
             </div>
 
-            <article class="menu-item" data-category="breakfast" data-name="نیمرو لوبیا" data-img="images/nimro-lobia.jpg" data-price="۲۰۰,۰۰۰" data-desc="نیمرو تازه همراه با لوبیای مخصوص و ادویه‌جات" data-time="۱۵" data-ingredients='["تخم‌مرغ (۲ عدد)","لوبیا چیتی","روغن مایع","نمک و فلفل","رب گوجه‌فرنگی","پیاز"]'>
+            <!-- نیمرو عدس -->
+            <article class="menu-item" data-category="breakfast" data-name="نیمرو عدس" data-img="images/nimro-adas.jpg" data-price="۱۹۰,۰۰۰" data-desc="نیمرو تازه همراه با عدس و سبزیجات معطر" data-time="۱۲" data-ingredients='["تخم‌مرغ (۲ عدد)","عدس","دورچین سینی","کره","چای"]'>
+                <img src="images/nimro-adas.jpg" alt="نیمرو عدس" width="105" height="105" loading="lazy" decoding="async">
+                <div>
+                    <h3>نیمرو عدس</h3>
+                    <p>نیمرو تازه همراه با عدس</p>
+                </div>
+                <span class="price">۱۹۰,۰۰۰ <small>تومان</small></span>
+            </article>
+
+            <!-- نیمرو لوبیا -->
+            <article class="menu-item" data-category="breakfast" data-name="نیمرو لوبیا" data-img="images/nimro-lobia.jpg" data-price="۲۰۰,۰۰۰" data-desc="نیمرو تازه همراه با لوبیای مخصوص و ادویه‌جات" data-time="۱۵" data-ingredients='["تخم‌مرغ (۲ عدد)","لوبیا","دورچین سینی","کره","چای"]'>
                 <img src="images/nimro-lobia.jpg" alt="نیمرو لوبیا" width="105" height="105" loading="lazy" decoding="async">
                 <div>
                     <h3>نیمرو لوبیا</h3>
@@ -862,16 +868,8 @@
                 <span class="price">۲۰۰,۰۰۰ <small>تومان</small></span>
             </article>
 
-            <article class="menu-item" data-category="breakfast" data-name="نیمرو عدس" data-img="images/nimro-adas.jpg" data-price="۱۹۰,۰۰۰" data-desc="نیمرو تازه همراه با عدس و سبزیجات معطر" data-time="۱۲" data-ingredients='["تخم‌مرغ (۲ عدد)","عدس","روغن مایع","نمک و فلفل","زردچوبه","پیاز"]'>
-                <img src="images/nimro-adas.jpg" alt="نیمرو عدس" width="105" height="105" loading="lazy" decoding="async">
-                <div>
-                    <h3>نیمرو عدس</h3>
-                    <p>نیمرو تازه همراه با عدس</p>
-                </div>
-                <span class="price">۱۹۰,۰۰۰ <small>تومان</small></span>
-            </article>
-
-            <article class="menu-item" data-category="breakfast" data-name="نیمرو" data-img="images/nimro.jpg" data-price="۱۳۰,۰۰۰" data-desc="نیمرو تازه و خوشمزه با تخم‌مرغ ارگانیک" data-time="۸" data-ingredients='["تخم‌مرغ (۲ عدد)","روغن مایع","نمک و فلفل"]'>
+            <!-- نیمرو -->
+            <article class="menu-item" data-category="breakfast" data-name="نیمرو" data-img="images/nimro.jpg" data-price="۱۳۰,۰۰۰" data-desc="نیمرو تازه و خوشمزه با تخم‌مرغ ارگانیک" data-time="۸" data-ingredients='["تخم‌مرغ (۲ عدد)","کره حیوانی","پیاز داغ","دورچین سینی"]'>
                 <img src="images/nimro.jpg" alt="نیمرو" width="105" height="105" loading="lazy" decoding="async">
                 <div>
                     <h3>نیمرو</h3>
@@ -880,7 +878,8 @@
                 <span class="price">۱۳۰,۰۰۰ <small>تومان</small></span>
             </article>
 
-            <article class="menu-item" data-category="breakfast" data-name="املت" data-img="images/omllet.jpg" data-price="۱۶۰,۰۰۰" data-desc="املت مخصوص کافه آس با سبزیجات تازه" data-time="۱۰" data-ingredients='["تخم‌مرغ (۳ عدد)","گوجه‌فرنگی","فلفل دلمه‌ای","پیاز","روغن مایع","نمک و فلفل","پنیر پیتزا"]'>
+            <!-- املت -->
+            <article class="menu-item" data-category="breakfast" data-name="املت" data-img="images/omllet.jpg" data-price="۱۶۰,۰۰۰" data-desc="املت مخصوص کافه آس با پوره گوجه و پیاز داغ" data-time="۱۰" data-ingredients='["پوره گوجه","تخم‌مرغ (۲ عدد)","دورچین سینی","پیاز داغ","کره حیوانی"]'>
                 <img src="images/omllet.jpg" alt="املت" width="105" height="105" loading="lazy" decoding="async">
                 <div>
                     <h3>املت</h3>
@@ -890,7 +889,8 @@
                 <span class="price">۱۶۰,۰۰۰ <small>تومان</small></span>
             </article>
 
-            <article class="menu-item" data-category="breakfast" data-name="عدس" data-img="images/adasi.jpg" data-price="۱۴۰,۰۰۰" data-desc="عدس گرم و تازه با نعناع و ادویه" data-time="۲۰" data-ingredients='["عدس","پیاز","روغن مایع","نمک و فلفل","زردچوبه","نعناع خشک"]'>
+            <!-- عدس -->
+            <article class="menu-item" data-category="breakfast" data-name="عدس" data-img="images/adasi.jpg" data-price="۱۴۰,۰۰۰" data-desc="عدس گرم و تازه" data-time="۲۰" data-ingredients='["عدس","چای"]'>
                 <img src="images/adasi.jpg" alt="عدس" width="105" height="105" loading="lazy" decoding="async">
                 <div>
                     <h3>عدس</h3>
@@ -899,7 +899,8 @@
                 <span class="price">۱۴۰,۰۰۰ <small>تومان</small></span>
             </article>
 
-            <article class="menu-item" data-category="breakfast" data-name="لوبیا" data-img="images/loobia.jpg" data-price="۱۸۰,۰۰۰" data-desc="لوبیای گرم و مخصوص با رب گوجه" data-time="۱۸" data-ingredients='["لوبیا چیتی","رب گوجه‌فرنگی","پیاز","روغن مایع","نمک و فلفل","زردچوبه"]'>
+            <!-- لوبیا -->
+            <article class="menu-item" data-category="breakfast" data-name="لوبیا" data-img="images/loobia.jpg" data-price="۱۸۰,۰۰۰" data-desc="لوبیای گرم و مخصوص" data-time="۱۸" data-ingredients='["لوبیا","چای"]'>
                 <img src="images/loobia.jpg" alt="لوبیا" width="105" height="105" loading="lazy" decoding="async">
                 <div>
                     <h3>لوبیا</h3>
@@ -908,11 +909,12 @@
                 <span class="price">۱۸۰,۰۰۰ <small>تومان</small></span>
             </article>
 
-            <article class="menu-item" data-category="breakfast" data-name="مکزیکی" data-img="images/omlet2.jpg" data-price="۲۴۰,۰۰۰" data-desc="ترکیب سوسیس با نیمرو و ادویه‌جات مخصوص" data-time="۱۴" data-ingredients='["تخم‌مرغ (۳ عدد)","سوسیس","روغن مایع","نمک و فلفل","زردچوبه","پنیر پیتزا"]'>
+            <!-- مکزیکی -->
+            <article class="menu-item" data-category="breakfast" data-name="مکزیکی" data-img="images/omlet2.jpg" data-price="۲۴۰,۰۰۰" data-desc="نیمرو با پوره گوجه و پپروتی دودی" data-time="۱۴" data-ingredients='["نیمرو","پوره گوجه","پپروتی دودی","کره حیوانی","ادویه جات","پیاز داغ","دورچین سینی","چای"]'>
                 <img src="images/omlet2.jpg" alt="مکزیکی" width="105" height="105" loading="lazy" decoding="async">
                 <div>
                     <h3>مکزیکی</h3>
-                    <p>ترکیب سوسیس با نیمرو و ادویه‌جات مخصوص</p>
+                    <p>نیمرو با پوره گوجه و پپروتی دودی</p>
                 </div>
                 <span class="price">۲۴۰,۰۰۰ <small>تومان</small></span>
             </article>
@@ -980,14 +982,15 @@
             
             <div class="footer-info">
                 <p><span aria-hidden="true">📍</span> قزوین، سعدی فرعی جنوبی</p>
-                <p><span aria-hidden="true">📞</span> <a href="tel:09934633400">۰۹۹۳۴۶۳۳۴۰۰</a></p>
-                <p><span aria-hidden="true">🕐</span> شنبه تا پنجشنبه ۸:۰۰ - ۲۳:۰۰</p>
+                <p><span aria-hidden="true">📞</span> <a href="tel:09965341076">۰۹۹۶۵۳۴۱۰۷۶</a></p>
+                <p><span aria-hidden="true">🕐</span> شنبه تا پنجشنبه ۵:۰۰ - ۲۳:۰۰</p>
                 <p><span aria-hidden="true">📧</span> <a href="mailto:info@cafe-as.com">info@cafe-as.com</a></p>
             </div>
             
             <div class="social-links">
-                <a href="#" aria-label="اینستاگرام"><span>📷</span> اینستاگرام</a>
-                <a href="#" aria-label="تلگرام"><span>✈️</span> تلگرام</a>
+                <a href="https://instagram.com/Cafe_sobhon_as" target="_blank" aria-label="اینستاگرام کافه آس">
+                    <span>📷</span> Cafe_sobhon_as
+                </a>
             </div>
             
             <p class="copyright">© ۲۰۲۶ کافه آس - تمامی حقوق محفوظ است</p>
@@ -995,7 +998,6 @@
         </footer>
     </main>
 
-    <!-- ===== مودال ===== -->
     <div class="modal-overlay" id="modalOverlay">
         <div class="modal-content" id="modalContent">
             <button class="modal-close" id="modalClose">✕</button>
@@ -1021,7 +1023,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // ===== تاریخ =====
             const dateSpan = document.getElementById('currentDate');
             if (dateSpan) {
                 dateSpan.textContent = new Date().toLocaleDateString('fa-IR', {
@@ -1029,7 +1030,6 @@
                 });
             }
 
-            // ===== تغییر تم =====
             const themeToggle = document.getElementById('themeToggle');
             if (themeToggle) {
                 const savedTheme = localStorage.getItem('theme');
@@ -1045,7 +1045,6 @@
                 });
             }
 
-            // ===== بازگشت به بالا =====
             const backToTop = document.getElementById('backToTop');
             window.addEventListener('scroll', function() {
                 backToTop.classList.toggle('visible', window.scrollY > 500);
@@ -1054,7 +1053,6 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // ===== فیلتر =====
             const filterButtons = document.querySelectorAll('.filter-btn');
             const menuItems = document.querySelectorAll('.menu-item');
             
@@ -1077,7 +1075,6 @@
                 });
             });
 
-            // ===== اسکرول به بخش =====
             filterButtons.forEach(btn => {
                 btn.addEventListener('click', function() {
                     const filter = this.dataset.filter;
@@ -1092,7 +1089,6 @@
                 });
             });
 
-            // ===== مودال =====
             const modalOverlay = document.getElementById('modalOverlay');
             const modalClose = document.getElementById('modalClose');
             const modalImage = document.getElementById('modalImage');
@@ -1102,21 +1098,18 @@
             const modalIngredients = document.getElementById('modalIngredients');
             const modalTime = document.getElementById('modalTime');
 
-            // آیکون‌های مواد اولیه
             const iconMap = {
                 'تخم‌مرغ': '🥚',
-                'لوبیا چیتی': '🫘',
-                'روغن مایع': '🫒',
-                'نمک و فلفل': '🧂',
-                'رب گوجه‌فرنگی': '🥫',
-                'پیاز': '🧅',
                 'عدس': '🫘',
-                'زردچوبه': '🌿',
-                'گوجه‌فرنگی': '🍅',
-                'فلفل دلمه‌ای': '🫑',
-                'پنیر پیتزا': '🧀',
-                'نعناع خشک': '🌿',
-                'سوسیس': '🌭',
+                'دورچین سینی': '🧺',
+                'کره': '🧈',
+                'کره حیوانی': '🧈',
+                'چای': '🍵',
+                'لوبیا': '🫘',
+                'پیاز داغ': '🧅',
+                'پوره گوجه': '🍅',
+                'پپروتی دودی': '🌶️',
+                'ادویه جات': '🌿',
                 'دانه قهوه اسپرسو': '🫘',
                 'آب جوش': '💧',
                 'چای سیاه برگ': '🍃',
@@ -1135,7 +1128,6 @@
                 return '🥘';
             }
 
-            // نمایش مودال
             menuItems.forEach(item => {
                 item.addEventListener('click', function() {
                     const name = this.dataset.name;
@@ -1152,7 +1144,6 @@
                     modalDesc.textContent = desc;
                     modalTime.textContent = `${time} دقیقه`;
 
-                    // نمایش مواد اولیه
                     modalIngredients.innerHTML = '';
                     ingredients.forEach(ing => {
                         const tag = document.createElement('span');
@@ -1167,7 +1158,6 @@
                 });
             });
 
-            // بستن مودال
             function closeModal() {
                 modalOverlay.classList.remove('active');
                 document.body.style.overflow = '';
@@ -1182,7 +1172,6 @@
                 if (e.key === 'Escape') closeModal();
             });
 
-            // ===== انیمیشن پس‌زمینه =====
             const orb1 = document.getElementById('orb1');
             const orb2 = document.getElementById('orb2');
             const orb3 = document.getElementById('orb3');
